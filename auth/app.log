@@ -1,0 +1,252 @@
+2024-12-24 16:14:23,744 - app.routes.auth - INFO - Попытка входа пользователя: string
+2024-12-24 16:14:23,798 - sqlalchemy.engine.Engine - INFO - select pg_catalog.version()
+2024-12-24 16:14:23,799 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2024-12-24 16:14:23,802 - sqlalchemy.engine.Engine - INFO - select current_schema()
+2024-12-24 16:14:23,802 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2024-12-24 16:14:23,805 - sqlalchemy.engine.Engine - INFO - show standard_conforming_strings
+2024-12-24 16:14:23,805 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2024-12-24 16:14:23,807 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-24 16:14:23,810 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.username, users.hashed_password, users.email, users.balance 
+FROM users 
+WHERE users.username = $1::VARCHAR
+2024-12-24 16:14:23,810 - sqlalchemy.engine.Engine - INFO - [generated in 0.00051s] ('string',)
+2024-12-24 16:14:24,019 - app.routes.auth - INFO - Пользователь успешно вошел: string
+2024-12-24 16:14:24,020 - sqlalchemy.engine.Engine - INFO - COMMIT
+2024-12-24 16:20:27,147 - app.routes.auth - INFO - Попытка регистрации пользователя: qq
+2024-12-24 16:20:27,199 - sqlalchemy.engine.Engine - INFO - select pg_catalog.version()
+2024-12-24 16:20:27,200 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2024-12-24 16:20:27,203 - sqlalchemy.engine.Engine - INFO - select current_schema()
+2024-12-24 16:20:27,204 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2024-12-24 16:20:27,206 - sqlalchemy.engine.Engine - INFO - show standard_conforming_strings
+2024-12-24 16:20:27,206 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2024-12-24 16:20:27,208 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-24 16:20:27,211 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.username, users.hashed_password, users.email, users.balance 
+FROM users 
+WHERE users.username = $1::VARCHAR
+2024-12-24 16:20:27,211 - sqlalchemy.engine.Engine - INFO - [generated in 0.00037s] ('qq',)
+2024-12-24 16:20:27,220 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.username, users.hashed_password, users.email, users.balance 
+FROM users 
+WHERE users.email = $1::VARCHAR
+2024-12-24 16:20:27,221 - sqlalchemy.engine.Engine - INFO - [generated in 0.00048s] ('qq@example.com',)
+2024-12-24 16:20:27,422 - sqlalchemy.engine.Engine - INFO - INSERT INTO users (username, hashed_password, email, balance) VALUES ($1::VARCHAR, $2::VARCHAR, $3::VARCHAR, $4::NUMERIC) RETURNING users.id
+2024-12-24 16:20:27,423 - sqlalchemy.engine.Engine - INFO - [generated in 0.00061s] ('qq', '$2b$12$tscndQs5.fqYHOS7QU2F6eiP6MXABhrXPiV6VSehvKzbb4R2IZW6m', 'qq@example.com', 1000.0)
+2024-12-24 16:20:27,426 - sqlalchemy.engine.Engine - INFO - COMMIT
+2024-12-24 16:20:27,428 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-24 16:20:27,429 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.username, users.hashed_password, users.email, users.balance 
+FROM users 
+WHERE users.id = $1::INTEGER
+2024-12-24 16:20:27,429 - sqlalchemy.engine.Engine - INFO - [generated in 0.00037s] (5,)
+2024-12-24 16:20:27,431 - app.routes.auth - INFO - Пользователь зарегистрирован: qq
+2024-12-24 16:20:27,432 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-24 16:20:43,288 - app.routes.auth - INFO - Попытка входа пользователя: qq
+2024-12-24 16:20:43,289 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-24 16:20:43,290 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.username, users.hashed_password, users.email, users.balance 
+FROM users 
+WHERE users.username = $1::VARCHAR
+2024-12-24 16:20:43,290 - sqlalchemy.engine.Engine - INFO - [cached since 16.08s ago] ('qq',)
+2024-12-24 16:20:43,470 - app.routes.auth - INFO - Пользователь успешно вошел: qq
+2024-12-24 16:20:43,470 - sqlalchemy.engine.Engine - INFO - COMMIT
+2024-12-24 16:23:52,255 - app.routes.auth - INFO - Получение списка пользователей: skip=0, limit=10
+2024-12-24 16:23:52,257 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-24 16:23:52,258 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.username, users.hashed_password, users.email, users.balance 
+FROM users 
+ LIMIT $1::INTEGER OFFSET $2::INTEGER
+2024-12-24 16:23:52,259 - sqlalchemy.engine.Engine - INFO - [generated in 0.00068s] (10, 0)
+2024-12-24 16:23:52,261 - app.routes.auth - INFO - Найдено пользователей: 4
+2024-12-24 16:23:52,264 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-24 16:24:11,642 - app.routes.auth - INFO - Получение списка пользователей: skip=0, limit=10
+2024-12-24 16:24:11,643 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-24 16:24:11,644 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.username, users.hashed_password, users.email, users.balance 
+FROM users 
+ LIMIT $1::INTEGER OFFSET $2::INTEGER
+2024-12-24 16:24:11,644 - sqlalchemy.engine.Engine - INFO - [cached since 19.39s ago] (10, 0)
+2024-12-24 16:24:11,646 - app.routes.auth - INFO - Найдено пользователей: 4
+2024-12-24 16:24:11,647 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-24 16:24:50,493 - app.routes.auth - INFO - Получение данных пользователя с ID: 5
+2024-12-24 16:24:50,494 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-24 16:24:50,495 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.username, users.hashed_password, users.email, users.balance 
+FROM users 
+WHERE users.id = $1::INTEGER
+2024-12-24 16:24:50,496 - sqlalchemy.engine.Engine - INFO - [generated in 0.00049s] (5,)
+2024-12-24 16:24:50,497 - app.routes.auth - INFO - Пользователь с ID 5 найден
+2024-12-24 16:24:50,498 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-24 16:26:07,477 - app.routes.auth - INFO - Получение списка пользователей: skip=0, limit=10
+2024-12-24 16:26:07,479 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-24 16:26:07,479 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.username, users.hashed_password, users.email, users.balance 
+FROM users 
+ LIMIT $1::INTEGER OFFSET $2::INTEGER
+2024-12-24 16:26:07,480 - sqlalchemy.engine.Engine - INFO - [cached since 135.2s ago] (10, 0)
+2024-12-24 16:26:07,482 - app.routes.auth - INFO - Найдено пользователей: 4
+2024-12-24 16:26:07,484 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-24 16:26:25,097 - app.routes.auth - INFO - Получение списка пользователей: skip=0, limit=10
+2024-12-24 16:26:25,099 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-24 16:26:25,099 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.username, users.hashed_password, users.email, users.balance 
+FROM users 
+ LIMIT $1::INTEGER OFFSET $2::INTEGER
+2024-12-24 16:26:25,100 - sqlalchemy.engine.Engine - INFO - [cached since 152.8s ago] (10, 0)
+2024-12-24 16:26:25,102 - app.routes.auth - INFO - Найдено пользователей: 4
+2024-12-24 16:26:25,104 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-24 16:26:46,246 - app.routes.auth - INFO - Получение списка пользователей: skip=0, limit=10
+2024-12-24 16:26:46,247 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-24 16:26:46,247 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.username, users.hashed_password, users.email, users.balance 
+FROM users 
+ LIMIT $1::INTEGER OFFSET $2::INTEGER
+2024-12-24 16:26:46,248 - sqlalchemy.engine.Engine - INFO - [cached since 174s ago] (10, 0)
+2024-12-24 16:26:46,250 - app.routes.auth - INFO - Найдено пользователей: 4
+2024-12-24 16:26:46,250 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-24 16:27:30,757 - app.routes.auth - INFO - Получение списка пользователей: skip=0, limit=10
+2024-12-24 16:27:30,758 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-24 16:27:30,759 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.username, users.hashed_password, users.email, users.balance 
+FROM users 
+ LIMIT $1::INTEGER OFFSET $2::INTEGER
+2024-12-24 16:27:30,759 - sqlalchemy.engine.Engine - INFO - [cached since 218.5s ago] (10, 0)
+2024-12-24 16:27:30,761 - app.routes.auth - INFO - Найдено пользователей: 4
+2024-12-24 16:27:30,763 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-24 16:31:10,026 - app.routes.auth - INFO - Попытка регистрации пользователя: ааа
+2024-12-24 16:31:10,078 - sqlalchemy.engine.Engine - INFO - select pg_catalog.version()
+2024-12-24 16:31:10,079 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2024-12-24 16:31:10,082 - sqlalchemy.engine.Engine - INFO - select current_schema()
+2024-12-24 16:31:10,083 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2024-12-24 16:31:10,085 - sqlalchemy.engine.Engine - INFO - show standard_conforming_strings
+2024-12-24 16:31:10,086 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2024-12-24 16:31:10,087 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-24 16:31:10,090 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.username, users.hashed_password, users.email, users.balance 
+FROM users 
+WHERE users.username = $1::VARCHAR
+2024-12-24 16:31:10,090 - sqlalchemy.engine.Engine - INFO - [generated in 0.00052s] ('ааа',)
+2024-12-24 16:31:10,101 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.username, users.hashed_password, users.email, users.balance 
+FROM users 
+WHERE users.email = $1::VARCHAR
+2024-12-24 16:31:10,102 - sqlalchemy.engine.Engine - INFO - [generated in 0.00081s] ('ааа@example.com',)
+2024-12-24 16:31:10,303 - sqlalchemy.engine.Engine - INFO - INSERT INTO users (username, hashed_password, email, balance) VALUES ($1::VARCHAR, $2::VARCHAR, $3::VARCHAR, $4::NUMERIC) RETURNING users.id
+2024-12-24 16:31:10,304 - sqlalchemy.engine.Engine - INFO - [generated in 0.00061s] ('ааа', '$2b$12$zZ5MTCkrqieO5FVxOPVVtemmHdaP75KzxPQq6BKzf7vhFonwD8AN.', 'ааа@example.com', 1000.0)
+2024-12-24 16:31:10,307 - sqlalchemy.engine.Engine - INFO - COMMIT
+2024-12-24 16:31:10,309 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-24 16:31:10,311 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.username, users.hashed_password, users.email, users.balance 
+FROM users 
+WHERE users.id = $1::INTEGER
+2024-12-24 16:31:10,312 - sqlalchemy.engine.Engine - INFO - [generated in 0.00058s] (6,)
+2024-12-24 16:31:10,314 - app.routes.auth - INFO - Пользователь зарегистрирован: ааа
+2024-12-24 16:31:10,315 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-24 16:31:21,519 - app.routes.auth - INFO - Попытка входа пользователя: ааа
+2024-12-24 16:31:21,520 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-24 16:31:21,520 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.username, users.hashed_password, users.email, users.balance 
+FROM users 
+WHERE users.username = $1::VARCHAR
+2024-12-24 16:31:21,521 - sqlalchemy.engine.Engine - INFO - [cached since 11.43s ago] ('ааа',)
+2024-12-24 16:31:21,706 - app.routes.auth - INFO - Пользователь успешно вошел: ааа
+2024-12-24 16:31:21,707 - sqlalchemy.engine.Engine - INFO - COMMIT
+2024-12-24 16:32:01,253 - app.routes.auth - INFO - Получение списка пользователей: skip=0, limit=10
+2024-12-24 16:32:01,254 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-24 16:32:01,255 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.username, users.hashed_password, users.email, users.balance 
+FROM users 
+ LIMIT $1::INTEGER OFFSET $2::INTEGER
+2024-12-24 16:32:01,255 - sqlalchemy.engine.Engine - INFO - [generated in 0.00046s] (10, 0)
+2024-12-24 16:32:01,258 - app.routes.auth - INFO - Найдено пользователей: 5
+2024-12-24 16:32:01,259 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-24 16:32:22,258 - app.routes.auth - INFO - Получение списка пользователей: skip=0, limit=10
+2024-12-24 16:32:22,259 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-24 16:32:22,260 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.username, users.hashed_password, users.email, users.balance 
+FROM users 
+ LIMIT $1::INTEGER OFFSET $2::INTEGER
+2024-12-24 16:32:22,260 - sqlalchemy.engine.Engine - INFO - [cached since 21.01s ago] (10, 0)
+2024-12-24 16:32:22,262 - app.routes.auth - INFO - Найдено пользователей: 5
+2024-12-24 16:32:22,263 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-24 16:32:37,422 - app.routes.auth - INFO - Получение списка пользователей: skip=0, limit=10
+2024-12-24 16:32:37,422 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-24 16:32:37,423 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.username, users.hashed_password, users.email, users.balance 
+FROM users 
+ LIMIT $1::INTEGER OFFSET $2::INTEGER
+2024-12-24 16:32:37,424 - sqlalchemy.engine.Engine - INFO - [cached since 36.17s ago] (10, 0)
+2024-12-24 16:32:37,425 - app.routes.auth - INFO - Найдено пользователей: 5
+2024-12-24 16:32:37,427 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-24 16:32:51,355 - app.routes.auth - INFO - Получение списка пользователей: skip=0, limit=10
+2024-12-24 16:32:51,355 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-24 16:32:51,356 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.username, users.hashed_password, users.email, users.balance 
+FROM users 
+ LIMIT $1::INTEGER OFFSET $2::INTEGER
+2024-12-24 16:32:51,356 - sqlalchemy.engine.Engine - INFO - [cached since 50.1s ago] (10, 0)
+2024-12-24 16:32:51,358 - app.routes.auth - INFO - Найдено пользователей: 5
+2024-12-24 16:32:51,359 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-24 16:33:16,418 - app.routes.auth - INFO - Получение списка пользователей: skip=0, limit=10
+2024-12-24 16:33:16,419 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-24 16:33:16,419 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.username, users.hashed_password, users.email, users.balance 
+FROM users 
+ LIMIT $1::INTEGER OFFSET $2::INTEGER
+2024-12-24 16:33:16,420 - sqlalchemy.engine.Engine - INFO - [cached since 75.17s ago] (10, 0)
+2024-12-24 16:33:16,422 - app.routes.auth - INFO - Найдено пользователей: 5
+2024-12-24 16:33:16,423 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-24 16:33:43,543 - app.routes.auth - INFO - Получение списка пользователей: skip=0, limit=10
+2024-12-24 16:33:43,544 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-24 16:33:43,544 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.username, users.hashed_password, users.email, users.balance 
+FROM users 
+ LIMIT $1::INTEGER OFFSET $2::INTEGER
+2024-12-24 16:33:43,545 - sqlalchemy.engine.Engine - INFO - [cached since 102.3s ago] (10, 0)
+2024-12-24 16:33:43,546 - app.routes.auth - INFO - Найдено пользователей: 5
+2024-12-24 16:33:43,547 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-24 16:33:53,012 - app.routes.auth - INFO - Получение списка пользователей: skip=0, limit=10
+2024-12-24 16:33:53,013 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-24 16:33:53,014 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.username, users.hashed_password, users.email, users.balance 
+FROM users 
+ LIMIT $1::INTEGER OFFSET $2::INTEGER
+2024-12-24 16:33:53,014 - sqlalchemy.engine.Engine - INFO - [cached since 111.8s ago] (10, 0)
+2024-12-24 16:33:53,016 - app.routes.auth - INFO - Найдено пользователей: 5
+2024-12-24 16:33:53,017 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-24 16:34:06,907 - app.routes.auth - INFO - Попытка входа пользователя: qq
+2024-12-24 16:34:06,908 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-24 16:34:06,908 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.username, users.hashed_password, users.email, users.balance 
+FROM users 
+WHERE users.username = $1::VARCHAR
+2024-12-24 16:34:06,909 - sqlalchemy.engine.Engine - INFO - [cached since 176.8s ago] ('qq',)
+2024-12-24 16:34:07,088 - app.routes.auth - INFO - Пользователь успешно вошел: qq
+2024-12-24 16:34:07,088 - sqlalchemy.engine.Engine - INFO - COMMIT
+2024-12-24 16:35:29,080 - app.routes.auth - INFO - Получение списка пользователей: skip=0, limit=10
+2024-12-24 16:35:29,081 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-24 16:35:29,081 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.username, users.hashed_password, users.email, users.balance 
+FROM users 
+ LIMIT $1::INTEGER OFFSET $2::INTEGER
+2024-12-24 16:35:29,083 - sqlalchemy.engine.Engine - INFO - [cached since 207.8s ago] (10, 0)
+2024-12-24 16:35:29,085 - app.routes.auth - INFO - Найдено пользователей: 5
+2024-12-24 16:35:29,086 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-24 16:35:41,939 - app.routes.auth - INFO - Получение списка пользователей: skip=0, limit=10
+2024-12-24 16:35:41,940 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-24 16:35:41,941 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.username, users.hashed_password, users.email, users.balance 
+FROM users 
+ LIMIT $1::INTEGER OFFSET $2::INTEGER
+2024-12-24 16:35:41,941 - sqlalchemy.engine.Engine - INFO - [cached since 220.7s ago] (10, 0)
+2024-12-24 16:35:41,943 - app.routes.auth - INFO - Найдено пользователей: 5
+2024-12-24 16:35:41,945 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-24 16:36:14,610 - app.routes.auth - INFO - Получение списка пользователей: skip=0, limit=10
+2024-12-24 16:36:14,611 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-24 16:36:14,612 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.username, users.hashed_password, users.email, users.balance 
+FROM users 
+ LIMIT $1::INTEGER OFFSET $2::INTEGER
+2024-12-24 16:36:14,613 - sqlalchemy.engine.Engine - INFO - [cached since 253.4s ago] (10, 0)
+2024-12-24 16:36:14,614 - app.routes.auth - INFO - Найдено пользователей: 5
+2024-12-24 16:36:14,615 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-24 18:43:12,572 - app.routes.auth - INFO - Попытка регистрации пользователя: new_user
+2024-12-24 18:43:12,628 - sqlalchemy.engine.Engine - INFO - select pg_catalog.version()
+2024-12-24 18:43:12,628 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2024-12-24 18:43:12,631 - sqlalchemy.engine.Engine - INFO - select current_schema()
+2024-12-24 18:43:12,632 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2024-12-24 18:43:12,634 - sqlalchemy.engine.Engine - INFO - show standard_conforming_strings
+2024-12-24 18:43:12,634 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2024-12-24 18:43:12,636 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-24 18:43:12,638 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.username, users.hashed_password, users.email, users.balance 
+FROM users 
+WHERE users.username = $1::VARCHAR
+2024-12-24 18:43:12,639 - sqlalchemy.engine.Engine - INFO - [generated in 0.00048s] ('new_user',)
+2024-12-24 18:43:12,648 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.username, users.hashed_password, users.email, users.balance 
+FROM users 
+WHERE users.email = $1::VARCHAR
+2024-12-24 18:43:12,648 - sqlalchemy.engine.Engine - INFO - [generated in 0.00050s] ('new_user@example.com',)
+2024-12-24 18:43:12,845 - sqlalchemy.engine.Engine - INFO - INSERT INTO users (username, hashed_password, email, balance) VALUES ($1::VARCHAR, $2::VARCHAR, $3::VARCHAR, $4::NUMERIC) RETURNING users.id
+2024-12-24 18:43:12,845 - sqlalchemy.engine.Engine - INFO - [generated in 0.00049s] ('new_user', '$2b$12$r5ITE0VMfx14zPhKduAG7uMF/jpDKdD1bZ6Vug7BijkJw3Sqh.BT.', 'new_user@example.com', 1000.0)
+2024-12-24 18:43:12,849 - sqlalchemy.engine.Engine - INFO - COMMIT
+2024-12-24 18:43:12,851 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-24 18:43:12,852 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.username, users.hashed_password, users.email, users.balance 
+FROM users 
+WHERE users.id = $1::INTEGER
+2024-12-24 18:43:12,853 - sqlalchemy.engine.Engine - INFO - [generated in 0.00042s] (7,)
+2024-12-24 18:43:12,855 - app.routes.auth - INFO - Пользователь зарегистрирован: new_user
+2024-12-24 18:43:12,855 - sqlalchemy.engine.Engine - INFO - ROLLBACK
