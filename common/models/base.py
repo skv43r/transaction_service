@@ -8,3 +8,4 @@ class Base(DeclarativeBase):
     Базовый класс для всех моделей приложения.
     """
     pass
+
