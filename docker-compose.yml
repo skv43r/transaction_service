@@ -1,0 +1,57 @@
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres
+    environment:
+      POSTGRES_DB: service
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: pass
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - dev
+    restart: always
+
+  fastapi_auth:
+    build:
+      context: ./auth
+    container_name: fastapi_auth
+    environment:
+      DATABASE_URL: postgresql+asyncpg://postgres:pass@postgres:5432/service
+      PYTHONPATH: /app:/app/common
+    depends_on:
+      - postgres
+    networks:
+      - dev
+    ports:
+      - "8001:8000"
+    volumes:
+      - ./auth:/app
+      - ./common:/app/common
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000
+
+  fastapi_service:
+    build:
+      context: ./service
+    container_name: fastapi_service
+    environment:
+      DATABASE_URL: postgresql+asyncpg://postgres:pass@postgres:5432/service
+      PYTHONPATH: /app:/app/common
+    depends_on:
+      - postgres
+    networks:
+      - dev
+    ports:
+      - "8002:8000"
+    volumes:
+      - ./service:/app
+      - ./common:/app/common
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000
+  
+volumes:
+  postgres_data:
+
+networks:
+  dev:
